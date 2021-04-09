@@ -1,31 +1,42 @@
-const path = require('path')
-
 module.exports = {
   development: {
-    client: 'sqlite3',
+    client: 'pg',
     connection: {
-      filename: path.join(__dirname, 'dev.sqlite3')
+      host : '127.0.0.1',
+      user : '',
+      password : '',
+      database : 'micado_test'
+    },  
+    migrations: {
+      directory: './db/migrations'
+    },
+    seeds: {
+      directory: './db/seeds/dev'
     },
     useNullAsDefault: true
   },
 
   test: {
-    client: 'sqlite3',
-    connection: {
-      filename: ':memory:'
+    client: 'pg',
+    connection:'postgres://localhost',
+    migrations: {
+      directory: './db/migrations'
+    },
+    seeds: {
+      directory: './db/seeds/test'
     },
     useNullAsDefault: true
   },
 
   production: {
-    client: 'postgresql',
+    client: 'pg',
     connection: process.env.DATABASE_URL,
-    pool: {
-      min: 2,
-      max: 10
-    },
     migrations: {
-      tableName: 'knex_migrations'
-    }
+      directory: './db/migrations'
+    },
+    seeds: {
+      directory: './db/seeds/production'
+    },
+    useNullAsDefault: true
   }
 }
