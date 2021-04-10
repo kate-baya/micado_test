@@ -11,13 +11,14 @@ function App(props) {
     subSeries: 'Deceased',
     start: '2020-04-30',
     end: '2020-05-20'
-  }) 
+  })
 
   useEffect(() => {
     getSubSeries()
       .then(res => {
         props.dispatch(receiveSubSeries(res))
       })
+
   }, [])
 
   useEffect(() => {
@@ -28,8 +29,13 @@ function App(props) {
       .catch(err => {
         console.log(err)
       })
-  },[state]) 
-  
+  }, [state])
+
+  const handleChange = (e) => {
+    console.log(e)
+    const { name, value } = e.target
+    return setState({...state, [name]: value})
+  }
 
   return (
     <div className='app'>
@@ -37,14 +43,32 @@ function App(props) {
       <div className="dropdown">
         <button className="dropbtn">Sub-Series</button>
         <div className="dropdown-content">
-        {props.subSeries.map(e => <>
-        <a onClick={() => setState({...state, subSeries: e.sub_series_name})} href="#">
-          {e.sub_series_name} 
-        </a>
-        {' '}
-        </>)}
+          {props.subSeries.map((e, idx) => <>
+            <a key={idx} onClick={() => setState({ ...state, subSeries: e.sub_series_name })} href="#">
+              {e.sub_series_name}
+            </a>
+            {' '}
+          </>)}
         </div>
       </div>
+      <form>
+        <div className='dates'>
+          <label>Start Date:</label>
+          <input
+            type='date'
+            name="start"
+            value={state.start}
+            onChange={handleChange}
+          />
+          <label>End Date:</label>
+          <input
+            type='date'
+            name="end"
+            value={state.end}
+            onChange={handleChange}
+          />
+        </div>
+      </form>
       <Dashboard />
     </div>
   )
