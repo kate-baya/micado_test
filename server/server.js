@@ -8,6 +8,6 @@ const server = express()
 server.use(express.json())
 server.use(express.static(path.join(__dirname, 'public')))
 
-server.use('/testData', covidTestData)
+server.use('/api/v1/testData', covidTestData)
 
 module.exports = server

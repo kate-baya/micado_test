@@ -22,7 +22,7 @@ router.get('/total/:sub_series/:start/:end', (req, res) => {
   })
 })
 
-//find value for specific dates/and sub_series
+//find value for specific dates/and sub_series - array
 router.get('/:sub_series/:start/:end', (req, res) => {
   const start = req.params.start
   const end = req.params.end
