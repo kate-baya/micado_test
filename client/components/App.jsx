@@ -22,7 +22,7 @@ export class App extends React.Component {
     // console.log(min())
     return (
       <div className='app'>
-        <h1>Fullstack Boilerplate - with Fruits!</h1>
+        <h1>New Zealand Covid-19 Data</h1>
         <BarChart />
       </div>
     )

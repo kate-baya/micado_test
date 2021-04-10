@@ -1,14 +1,15 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { arc, pie, scaleBand, scaleLinear, max } from 'd3'
-import * as d3 from "d3"
+import { arc, pie, scaleBand, scaleLinear, max, format } from 'd3'
 import { AxisBottom } from './AxisBottom'
 import { AxisLeft } from './AxisLeft'
 import {Marks} from './Marks'
 
-const width = 500
-const height = 500
-const margin = { top: 20, right: 20, bottom: 20, left: 200 }
+const width = 1200
+const height = 800
+const margin = { top: 20, right: 30, bottom: 80, left: 120 }
+const xAxisLabelOffset = 65
+const xAxisTickFormat = format(",d")
 
 function BarChart ({active}) {
   const innerHeight = height - margin.top - margin.bottom
@@ -19,7 +20,8 @@ function BarChart ({active}) {
 
   const yScale = scaleBand()
     .domain(active.map(yValue))
-    .range([0, innerHeight]);
+    .range([0, innerHeight])
+    .paddingInner(0.5);
   
   const xScale = scaleLinear()
     .domain([0, max(active, xValue)])
@@ -29,9 +31,10 @@ function BarChart ({active}) {
     <>
     <svg width={width} height={height}>
       <g transform={`translate(${margin.left},${margin.top})`}>
-        <AxisBottom xScale={xScale} innerHeight={innerHeight}/>
+        <AxisBottom xScale={xScale} innerHeight={innerHeight} tickFormat={xAxisTickFormat}/>
         <AxisLeft yScale={yScale} />  
-        <Marks active={active} xScale={xScale} yScale={yScale} xValue={xValue} yValue={yValue}/>
+        <text className='axis-label' x={innerWidth / 2} y={innerHeight + xAxisLabelOffset} textAnchor='middle'>Active Cases</text>
+        <Marks active={active} xScale={xScale} yScale={yScale} xValue={xValue} yValue={yValue} tooltipFormat={xAxisTickFormat}/>
       </g>
     </svg>
     </>
