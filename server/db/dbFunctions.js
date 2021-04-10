@@ -5,6 +5,13 @@ const database = require('knex')(configuration);
 // console.log(database.select('*').from('test'))
 // console.log(database.select('*').from('covid_19_new_zealand'))
 
+//find all subSeries
+function getSubSeries(db = database) {
+  return db('covidtestdata')
+  .distinct()
+  .select('sub_series_name')
+}
+
 //find total value for specifc dates/and sub_series
 function getTotalValue(sub_series, start, end, db = database) {
   return db('covidtestdata')
@@ -68,4 +75,5 @@ module.exports = {
   getTotalDays,
   findMinValue,
   findMaxValue,
+  getSubSeries
 }

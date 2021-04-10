@@ -1,9 +1,11 @@
 import { combineReducers } from 'redux'
 
 import test from './test'
-import active from './active'
+import data from './data'
+import subSeries from './subSeries'
 
 export default combineReducers({
-  active,
+  subSeries,
+  data,
   test 
 })

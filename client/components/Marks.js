@@ -1,7 +1,7 @@
 import React from 'react'
 
-export const Marks = ({active, xScale, yScale, xValue, yValue, tooltipFormat}) => 
-  active.map((d, idx) => (
+export const Marks = ({data, xScale, yScale, xValue, yValue, tooltipFormat}) => 
+  data.map((d, idx) => (
     <rect
       className='mark' 
       key={idx} 
