@@ -4,12 +4,12 @@ import {connect} from 'react-redux'
 import BarChart from './BarChart'
 import QuantitativeTotal from './QuantitativeTotal'
 
-function Dashboard ({data}) {
+function Dashboard ({subSeries, data}) {
   return(
     <>
     <h1>Dashboard</h1>
     <QuantitativeTotal />
-    <BarChart />
+    <BarChart subSeries={subSeries}/>
     </>
   )
 }

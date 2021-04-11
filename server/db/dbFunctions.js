@@ -25,7 +25,7 @@ function findValue(sub_series, start, end, db = database) {
   return db('covidtestdata')
   .where('sub_series_name', sub_series)
   .whereBetween('parameter', [start, end])
-  .select('parameter', 'value')
+  .select('sub_series_name','parameter', 'value')
 }
 
 //find dates for specifc value and sub_series

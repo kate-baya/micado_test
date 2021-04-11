@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import { connect } from 'react-redux'
 import { arc, pie, scaleBand, scaleLinear, max, format } from 'd3'
 import { AxisBottom } from './AxisBottom'
@@ -11,7 +11,7 @@ const margin = { top: 20, right: 30, bottom: 80, left: 120 }
 const xAxisLabelOffset = 65
 const xAxisTickFormat = format(",d")
 
-function BarChart ({data}) {
+function BarChart ({subSeries, data}) {
   const innerHeight = height - margin.top - margin.bottom
   const innerWidth = width - margin.left - margin.right
 
@@ -25,7 +25,7 @@ function BarChart ({data}) {
   
   const xScale = scaleLinear()
     .domain([0, max(data, xValue)])
-    .range([0, innerWidth])
+    .range([0, innerWidth]);
 
   return (
     <>
@@ -34,7 +34,7 @@ function BarChart ({data}) {
       <g transform={`translate(${margin.left},${margin.top})`}>
         <AxisBottom xScale={xScale} innerHeight={innerHeight} tickFormat={xAxisTickFormat}/>
         <AxisLeft yScale={yScale} />  
-        <text className='axis-label' x={innerWidth / 2} y={innerHeight + xAxisLabelOffset} textAnchor='middle'>Active Cases</text>
+        <text className='axis-label' x={innerWidth / 2} y={innerHeight + xAxisLabelOffset} textAnchor='middle'>{subSeries}</text>
         <Marks data={data} xScale={xScale} yScale={yScale} xValue={xValue} yValue={yValue} tooltipFormat={xAxisTickFormat}/>
       </g>
     </svg>
@@ -44,6 +44,7 @@ function BarChart ({data}) {
 
 const mapStateToProps = (state) => {
   return {
+    // subSeries: state.subSeries,
     data: state.data
   }
 }

@@ -69,7 +69,7 @@ function App(props) {
           />
         </div>
       </form>
-      <Dashboard />
+      <Dashboard subSeries={state.subSeries}/>
     </div>
   )
 }
