@@ -1,9 +1,9 @@
-import React, {useEffect} from 'react'
+import React from 'react'
 import { connect } from 'react-redux'
-import { arc, pie, scaleBand, scaleLinear, max, format } from 'd3'
-import { AxisBottom } from './AxisBottom'
-import { AxisLeft } from './AxisLeft'
-import {Marks} from './Marks'
+import { scaleBand, scaleLinear, max, format } from 'd3'
+import { AxisBottom } from './barChartLayout/AxisBottom'
+import { AxisLeft } from './barChartLayout/AxisLeft'
+import { Marks } from './barChartLayout/Marks'
 
 const width = 1200
 const height = 800
@@ -44,7 +44,6 @@ function BarChart ({data}) {
 
 const mapStateToProps = (state) => {
   return {
-    // subSeries: state.subSeries,
     data: state.data
   }
 }
