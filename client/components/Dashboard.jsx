@@ -6,20 +6,20 @@ import BarChart from './BarChart'
 import QuantitativeTotal from './QuantitativeTotal'
 
 function Dashboard() {
-  const [state, setState] = useState({
-    components: [
+  const [components, updateComponents] = useState(
+    [
       { id: '1', name: BarChart},
       { id: '2', name: QuantitativeTotal},
     ]
-  })
+  )
 
   function handleOnDragEnd(result) {
     if(!result.destination ) return;
-    const items = Array.from(state.components);
+    const items = Array.from(components);
     const [reorderedItem] = items.splice(result.source.index, 1)
     items.splice(result.destination.index, 0, reorderedItem)
     
-    setState({components:items})
+    updateComponents(items)
   }
 
   return (
@@ -29,11 +29,11 @@ function Dashboard() {
         <Droppable droppableId='components'>
           {(provided) => (
             <div {...provided.droppableProps} ref={provided.innerRef}>
-            {state.components.map((e, idx) => {
-              return <Draggable key={e.id} draggableId={e.id} index={idx}>
+            {components.map((c, idx) => {
+              return <Draggable key={c.id} draggableId={c.id} index={idx}>
                 {(provided) => (
-                  <div {...provided.draggableProps} {...provided.dragHandleProps} ref={provided.innerRef}>
-                  <e.name />
+                  <div {...provided.draggableProps} {...provided.dragHandleProps} ref={provided.innerRef} className='box'>
+                  <c.name />
                   </div>
                 )}
                 </Draggable>
@@ -47,10 +47,4 @@ function Dashboard() {
   )
 }
 
-const mapStateToProps = (state) => {
-  return {
-    data: state.data
-  }
-}
-
-export default connect(mapStateToProps)(Dashboard)
+export default connect()(Dashboard)
