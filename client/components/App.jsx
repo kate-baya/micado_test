@@ -5,6 +5,7 @@ import { getSubSeries, getValues } from '../apis/covidDataApi'
 import { receiveData, receiveSubSeries } from '../actions/index'
 
 import Dashboard from './Dashboard'
+import Drag from './Drag'
 
 function App(props) {
   const [state, setState] = useState({
@@ -43,12 +44,12 @@ function App(props) {
       <div className="dropdown">
         <button className="dropbtn">Sub-Series</button>
         <div className="dropdown-content">
-          {props.subSeries.map((e, idx) => <>
-            <a key={idx} onClick={() => setState({ ...state, subSeries: e.sub_series_name })} href="#">
+          {props.subSeries.map((e, idx) => <div key={idx}>
+            <a onClick={() => setState({ ...state, subSeries: e.sub_series_name })} href="#">
               {e.sub_series_name}
             </a>
             {' '}
-          </>)}
+          </div>)}
         </div>
       </div>
       <form>
