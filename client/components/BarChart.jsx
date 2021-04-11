@@ -1,43 +1,42 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import { connect } from 'react-redux'
-import { arc, pie, scaleBand, scaleLinear, max } from 'd3'
-import * as d3 from "d3"
+import { arc, pie, scaleBand, scaleLinear, max, format } from 'd3'
+import { AxisBottom } from './AxisBottom'
+import { AxisLeft } from './AxisLeft'
+import {Marks} from './Marks'
 
-const width = 500
-const height = 500
-const margin = { top: 20, right: 20, bottom: 20, left: 200 }
+const width = 1200
+const height = 800
+const margin = { top: 20, right: 30, bottom: 80, left: 120 }
+const xAxisLabelOffset = 65
+const xAxisTickFormat = format(",d")
 
-
-function BarChart ({active}) {
-
-  console.log(active[0])
+function BarChart ({subSeries, data}) {
   const innerHeight = height - margin.top - margin.bottom
   const innerWidth = width - margin.left - margin.right
 
-  const yScale = scaleBand()
-    .domain(active.map(d => d.parameter))
-    .range([0, innerHeight]);
+  const yValue = d => d.parameter
+  const xValue = d => d.value
 
-    console.log(yScale)
+  const yScale = scaleBand()
+    .domain(data.map(yValue))
+    .range([0, innerHeight])
+    .paddingInner(0.5);
   
   const xScale = scaleLinear()
-    .domain([0, max(active, d => d.value)])
-    .range([0, innerWidth])
+    .domain([0, max(data, xValue)])
+    .range([0, innerWidth]);
 
   return (
     <>
+    <h1>Data Visualisation</h1>
     <svg width={width} height={height}>
       <g transform={`translate(${margin.left},${margin.top})`}>
-        {xScale.ticks().map(tickValue => <g key={tickValue} transform={`translate(${xScale(tickValue)},0)`}>
-          <line y2={innerHeight} stroke='black' />
-          <text y={innerHeight + 3} dy='.71em' style={{textAnchor: 'middle'}}>{tickValue}</text>
-          </g>)}
-
-        {yScale.domain().map(tickValue =>
-        <text key={tickValue} dy='.32em' x={-3} y={yScale(tickValue) + yScale.bandwidth() / 2} style={{textAnchor: 'end'}}>{tickValue}</text>
-        )}
-      {active.map((d, idx)=> <rect key={idx} x={0} y={yScale(d.parameter)} width={xScale(d.value)} height={yScale.bandwidth()} />)}
-    </g>
+        <AxisBottom xScale={xScale} innerHeight={innerHeight} tickFormat={xAxisTickFormat}/>
+        <AxisLeft yScale={yScale} />  
+        <text className='axis-label' x={innerWidth / 2} y={innerHeight + xAxisLabelOffset} textAnchor='middle'>{subSeries}</text>
+        <Marks data={data} xScale={xScale} yScale={yScale} xValue={xValue} yValue={yValue} tooltipFormat={xAxisTickFormat}/>
+      </g>
     </svg>
     </>
   )
@@ -45,7 +44,8 @@ function BarChart ({active}) {
 
 const mapStateToProps = (state) => {
   return {
-    active: state.active
+    // subSeries: state.subSeries,
+    data: state.data
   }
 }
 

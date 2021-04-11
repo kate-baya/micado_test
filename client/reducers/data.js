@@ -1,11 +1,11 @@
-import {RECEIVE_ACTIVE} from '../actions/index'
+import {RECEIVE_DATA} from '../actions/index'
 
 const initialState = []
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
-    case RECEIVE_ACTIVE:
-      return action.active
+    case RECEIVE_DATA:
+      return action.data
 
     default:
       return state

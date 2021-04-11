@@ -11,6 +11,14 @@ router.get('/', (req, res) => {
   })
 })
 
+//find all potential column info
+
+//find all subSeries
+router.get('/subSeries', (req, res) => {
+  db.getSubSeries()
+  .then(subSeries => res.json(subSeries))
+})
+
 //find TOTAL value for specific dates/and sub_series
 router.get('/total/:sub_series/:start/:end', (req, res) => {
   const start = req.params.start
