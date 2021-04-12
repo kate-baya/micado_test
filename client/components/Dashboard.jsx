@@ -32,7 +32,7 @@ function Dashboard() {
             {components.map((c, idx) => {
               return <Draggable key={c.id} draggableId={c.id} index={idx}>
                 {(provided) => (
-                  <div {...provided.draggableProps} {...provided.dragHandleProps} ref={provided.innerRef} className='box'>
+                  <div {...provided.draggableProps} {...provided.dragHandleProps} ref={provided.innerRef} > 
                   <c.name />
                   </div>
                 )}

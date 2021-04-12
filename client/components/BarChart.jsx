@@ -5,16 +5,20 @@ import { AxisBottom } from './barChartLayout/AxisBottom'
 import { AxisLeft } from './barChartLayout/AxisLeft'
 import { Marks } from './barChartLayout/Marks'
 
-const width = 500
-const height = 300
 const margin = { top: 20, right: 30, bottom: 80, left: 120 }
 const xAxisLabelOffset = 65
-const xAxisTickFormat = format(",d")
+const xAxisTickFormat = format(".2s")
 
 function BarChart ({data}) {
+  const parameterLength = []
+  data.map(d => parameterLength.push(d.parameter))
+
+  const width = 800
+  const height = parameterLength.length > 19 ? parameterLength.length * 25 : 500
+
   const innerHeight = height - margin.top - margin.bottom
   const innerWidth = width - margin.left - margin.right
-
+  
   const yValue = d => d.parameter
   const xValue = d => d.value
 
