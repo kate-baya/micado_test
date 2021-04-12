@@ -5,7 +5,8 @@ import { getSubSeries } from '../apis/covidDataApi'
 import { receiveSubSeries } from '../actions/index'
 
 import Filter from './Filter'
-import Dashboard from './Dashboard'
+import Graph from './Graph'
+import Analytics from './Analytics'
 
 function App(props) {
 
@@ -42,7 +43,12 @@ function App(props) {
       <section className="hero is-fullheight-with-navbar">
         <div className="hero-body">
           <div>
-            <Dashboard />
+            <div>
+            <Analytics />
+            </div>
+            <div>
+            <Graph />
+            </div>
           </div>
         </div>
       </section>

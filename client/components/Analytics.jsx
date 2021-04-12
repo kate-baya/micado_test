@@ -2,14 +2,18 @@ import React, { useState } from 'react'
 import { connect } from 'react-redux'
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd'
 
-import BarChart from './BarChart'
-import QuantitativeTotal from './QuantitativeTotal'
+import Average from './Average'
+import Total from './Total'
+import MinMax from './MinMax'
+import Welcome from './Welcome'
 
-function Dashboard() {
+function Analytics() {
   const [components, updateComponents] = useState(
     [
-      { id: '1', name: BarChart},
-      { id: '2', name: QuantitativeTotal},
+      { id: '1', name: Welcome},
+      { id: '2', name: Total},
+      { id: '3', name: MinMax},
+      { id: '4', name: Average},
     ]
   )
 
@@ -24,16 +28,18 @@ function Dashboard() {
 
   return (
     <>
-      <h1>Dashboard</h1>
+      <h1>Graph</h1>
       <DragDropContext onDragEnd={handleOnDragEnd}>
-        <Droppable droppableId='components'>
+        <Droppable droppableId='components' direction='horizontal'>
           {(provided) => (
-            <div {...provided.droppableProps} ref={provided.innerRef}>
+            <div {...provided.droppableProps} ref={provided.innerRef} className='columns is-multiline'>
             {components.map((c, idx) => {
               return <Draggable key={c.id} draggableId={c.id} index={idx}>
                 {(provided) => (
-                  <div {...provided.draggableProps} {...provided.dragHandleProps} ref={provided.innerRef} > 
+                  <div {...provided.draggableProps} {...provided.dragHandleProps} ref={provided.innerRef} className='column'> 
+                  <div className='box'>
                   <c.name />
+                  </div>
                   </div>
                 )}
                 </Draggable>
@@ -47,4 +53,4 @@ function Dashboard() {
   )
 }
 
-export default connect()(Dashboard)
+export default connect()(Analytics)

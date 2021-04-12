@@ -1,10 +1,10 @@
 import React from 'react'
 import {connect} from 'react-redux'
 
-function QuantitativeTotal ({data}) {
+function SpaceFiller ({data}) {
   return(
     <>
-    <h1>Quantitative Total</h1>
+    <h1>Space Filler</h1>
     </>
   )
 }
@@ -15,4 +15,4 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps)(QuantitativeTotal)
+export default connect(mapStateToProps)(SpaceFiller)
