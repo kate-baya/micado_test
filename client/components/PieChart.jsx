@@ -6,21 +6,16 @@ import { getTotal } from '../apis/covidDataApi'
 import { receiveAverages } from '../actions/index'
 
 
-function PieChart(props) {
+function PieChart(props, {subSeries, settings}) {
 
+  console.log(subSeries)
   // latestMth = d3.max(x.map(d=>d.month));
   const parameters = []
-  const data = []
-  
-  // useEffect(() => {
-  //   props.data.map(d => parameters.push(d.parameter))
-  //   const start = d3.min(parameters)
-  //   const end = d3.max(parameters)
+  const data = [subSeries.map(sub => {
+    getTotal(sub.sub_series_name, settings.start, settings.end)
+  })]
 
-    
-  // },[props.data])
-
-  // console.log('data array:', data)
+  console.log(data)
 
 
       // const data = [{avg: "113.0000000000000000", subSeries: "Active"},
@@ -108,6 +103,7 @@ const mapStateToProps = (state) => {
     return {
       averages: state.averages,
       subSeries: state.subSeries,
+      settings: state.settings,
       data: state.data
     }
   }

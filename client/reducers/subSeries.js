@@ -1,6 +1,6 @@
 import {RECEIVE_SUBSERIES} from '../actions/index'
 
-const initialState = []
+const initialState = [{sub_series_name: 'Active'}, {sub_series_name: 'Deceased'}]
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {

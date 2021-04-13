@@ -1,6 +1,6 @@
 export const RECEIVE_DATA = 'RECEIVE_DATA'
 export const RECEIVE_SUBSERIES = 'RECEIVE_SUBSERIES'
-export const RECEIVE_CAT = 'RECEIVE_CAT'
+export const RECEIVE_FILTER_OPTIONS = 'RECEIVE_FILTER_OPTIONS'
 export const RECEIVE_AVERAGES = 'RECEIVE_AVERAGES'
 
 export const receiveData = (data) => {
@@ -17,10 +17,10 @@ export const receiveSubSeries = (subSeries) => {
   }
 }
 
-export const receiveCat = (cat) => {
+export const receiveFilterOptions = (settings) => {
   return {
-    type: RECEIVE_CAT,
-    cat: cat
+    type: RECEIVE_FILTER_OPTIONS,
+    settings: settings
   }
 }
 

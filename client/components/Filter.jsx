@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
 
 import { getValues } from '../apis/covidDataApi'
-import { receiveData, receiveCat } from '../actions/index'
+import { receiveData, receiveFilterOptions } from '../actions/index'
 
 function Filter(props) {
   const [state, setState] = useState({
@@ -13,7 +13,7 @@ function Filter(props) {
 
   //dispatches og state... not necessary?? can set the init state in reducer
   useEffect(() => {
-    props.dispatch(receiveCat(state.subSeries))
+    props.dispatch(receiveFilterOptions(state))
   }, [])
 
   useEffect(() => {
@@ -24,14 +24,14 @@ function Filter(props) {
       .catch(err => {
         console.log(err)
       })
-    props.dispatch(receiveCat(state.subSeries))
+    props.dispatch(receiveFilterOptions(state))
   }, [state])
 
   const handleChange = (e) => {
     const { name, value } = e.target
     return setState({ ...state, [name]: value })
   }
-
+  
   return (
     <>
       <div className="dropdown is-hoverable is-right">
@@ -95,6 +95,7 @@ function Filter(props) {
 const mapStateToProps = (state) => {
   return {
     subSeries: state.subSeries,
+    settings: state.settings
   }
 }
 
