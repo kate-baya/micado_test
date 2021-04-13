@@ -2,16 +2,21 @@ import React, { useState } from 'react'
 import { connect } from 'react-redux'
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd'
 
-import Analytics from './Analytics'
-import Graph from './Graph'
-import Filter from './Filter'
+import Average from './Average'
+import Total from './Total'
+import MinMax from './MinMax'
+import Welcome from './Welcome'
 
-function Dashboard() {
+function Analytics() {
   const [components, updateComponents] = useState(
-    [{ id: '1', name: Analytics},
-     { id: '2', name: Graph}]
+    [
+      { id: '1', name: Welcome},
+      { id: '2', name: Total},
+      { id: '3', name: MinMax},
+      { id: '4', name: Average},
+    ]
   )
-    
+
   function handleOnDragEnd(result) {
     if(!result.destination ) return;
     const items = Array.from(components);
@@ -20,22 +25,18 @@ function Dashboard() {
     
     updateComponents(items)
   }
-  
+
   return (
-    <>
-      <div className='block level'>
-        <h1 className='is-size-4 has-text-weight-semibold'>Dashboard</h1>
-        <Filter />
-      </div>
+    <div className='block'>
       <DragDropContext onDragEnd={handleOnDragEnd}>
-        <Droppable droppableId='components'>
+        <Droppable droppableId='components' direction='horizontal'>
           {(provided) => (
-            <div {...provided.droppableProps} ref={provided.innerRef}>
+            <div {...provided.droppableProps} ref={provided.innerRef} className='columns is-multiline'>
               {components.map((c, idx) => {
                 return <Draggable key={c.id} draggableId={c.id} index={idx}>
                   {(provided) => (
-                    <div {...provided.draggableProps} {...provided.dragHandleProps} ref={provided.innerRef} className='container is-widescreen'>
-                      <div className="notification is-primary mb-4 p-4">
+                    <div {...provided.draggableProps} {...provided.dragHandleProps} ref={provided.innerRef} className='column is-half'> 
+                      <div className='box'>
                         <c.name />
                       </div>
                     </div>
@@ -47,8 +48,8 @@ function Dashboard() {
           )}
         </Droppable>
       </DragDropContext>
-    </>
+    </div>
   )
 }
 
-export default connect()(Dashboard)
+export default connect()(Analytics)

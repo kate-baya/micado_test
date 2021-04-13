@@ -6,8 +6,8 @@ export const AxisBottom = ({xScale, innerHeight, tickFormat}) =>
       <line y2={innerHeight}/>
       <text 
         style={{textAnchor: 'middle'}}
-        dy='.71em' 
-        y={innerHeight + 3} 
+        dy='.71em'
+        y={innerHeight + 4} 
       >
         {tickFormat(tickValue)}
       </text>

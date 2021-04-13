@@ -4,7 +4,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;400;700&display=swap');
 
 // Set your brand colors
-$purple: #8A4D76;
+$purple: #fa00a7;
 $pink: #FA7C91;
 $brown: #757763;
 $beige-light: #D0D1CD;
@@ -23,6 +23,7 @@ $body-background-color: $beige-lighter;
 $control-border-width: 2px;
 $input-border-color: transparent;
 $input-shadow: none;
+$hero-body-padding: 2rem 2.5rem 1.5rem 2.5rem;
 
 // Import only what you need from Bulma
 @import "../../node_modules/bulma/sass/utilities/_all.sass";
@@ -35,9 +36,12 @@ $input-shadow: none;
 @import "../../node_modules/bulma/sass/layout/hero.sass";
 @import "../../node_modules/bulma/sass/layout/section.sass";
 
-html, 
-body {
-  font-family: 'Montserrat', sans-serif;
+html {
+  height:100%; 
+  body {
+    font-family: 'Montserrat', sans-serif;
+    height:100%; 
+  }
 }
 
 .tick {
@@ -56,4 +60,20 @@ body {
 .axis-label {
   font-size: 2.5em;
   fill:#635F5D;
+}
+
+.border {
+  border: 2px solid;
+}
+
+img {
+  width: 64px;
+  height: 64px;
+}
+
+.dates {
+  .start {
+    padding-bottom: 2rem;
+    padding-top: 1rem;
+  }
 }

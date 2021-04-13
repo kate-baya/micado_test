@@ -19,7 +19,7 @@
     "lint": "eslint --ext .js,.jsx .",
     "webpack": "webpack --config ./client/webpack.config.js",
     "knex": "knex --knexfile ./server/db/knexfile.js",
-    "css-build": "node-sass --omit-source-map-url sass/mystyles.scss css/mystyles.css",
+    "css-build": "node-sass --omit-source-map-url client/styles/index.scss server/public/styles.css",
     "css-watch": "npm run css-build -- --watch",
     "css-start": "npm run css-watch"
   },
