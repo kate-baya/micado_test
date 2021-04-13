@@ -2,26 +2,7 @@ import React, { useEffect } from 'react';
 import { connect } from 'react-redux'
 import * as d3 from 'd3';
 
-import { getTotal } from '../apis/covidDataApi'
-import { receiveAverages } from '../actions/index'
-
-
-function PieChart(props, {subSeries, settings}) {
-
-  console.log(subSeries)
-  // latestMth = d3.max(x.map(d=>d.month));
-  const parameters = []
-  const data = [subSeries.map(sub => {
-    getTotal(sub.sub_series_name, settings.start, settings.end)
-  })]
-
-  console.log(data)
-
-
-      // const data = [{avg: "113.0000000000000000", subSeries: "Active"},
-      // {avg: "20.6190476190476190", subSeries: "Deceased"},
-      // {avg: "1358.8095238095238095", subSeries: "Recovered"}]
-
+function PieChart({data}) {
       const outerRadius = 100
       const innerRadius = 70
 
@@ -99,13 +80,4 @@ function PieChart(props, {subSeries, settings}) {
       )
 }
 
-const mapStateToProps = (state) => {
-    return {
-      averages: state.averages,
-      subSeries: state.subSeries,
-      settings: state.settings,
-      data: state.data
-    }
-  }
-
-  export default connect(mapStateToProps)(PieChart)
+  export default connect()(PieChart)
