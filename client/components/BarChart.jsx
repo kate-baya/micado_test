@@ -1,6 +1,6 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import { connect } from 'react-redux'
-import { scaleBand, scaleLinear, max, format, stackOffsetDiverging } from 'd3'
+import { scaleBand, scaleLinear, max, format } from 'd3'
 import { AxisBottom } from './barChartLayout/AxisBottom'
 import { AxisLeft } from './barChartLayout/AxisLeft'
 import { Marks } from './barChartLayout/Marks'
@@ -10,6 +10,7 @@ const xAxisLabelOffset = 65
 const xAxisTickFormat = format(".2s")
 
 function BarChart ({data, cat}) {
+
   const parameterLength = []
   data.map(d => parameterLength.push(d.parameter))
 
@@ -49,7 +50,8 @@ function BarChart ({data, cat}) {
 const mapStateToProps = (state) => {
   return {
     data: state.data,
-    cat: state.cat
+    cat: state.cat,
+    subSeries: state.subSeries
   }
 }
 

@@ -7,10 +7,8 @@ import SpaceFiller from './SpaceFiller'
 
 function Graph() {
   const [components, updateComponents] = useState(
-    [
-      { id: '1', name: BarChart},
-      { id: '2', name: SpaceFiller},
-    ]
+    [{ id: '1', name: BarChart},
+     { id: '2', name: SpaceFiller}]
   )
 
   function handleOnDragEnd(result) {
@@ -28,18 +26,18 @@ function Graph() {
         <Droppable droppableId='components' direction='horizontal'>
           {(provided) => (
             <div {...provided.droppableProps} ref={provided.innerRef} className='columns'>
-            {components.map((c, idx) => {
-              return <Draggable key={c.id} draggableId={c.id} index={idx}>
-                {(provided) => (
-                  <div {...provided.draggableProps} {...provided.dragHandleProps} ref={provided.innerRef} className='column'> 
-                  <div className='box'>
-                  <c.name />
-                  </div>
-                  </div>
-                )}
+              {components.map((c, idx) => {
+                return <Draggable key={c.id} draggableId={c.id} index={idx}>
+                  {(provided) => (
+                    <div {...provided.draggableProps} {...provided.dragHandleProps} ref={provided.innerRef} className='column'> 
+                      <div className='box'>
+                        <c.name />
+                      </div>
+                    </div>
+                  )}
                 </Draggable>
-            })}
-            {provided.placeholder}
+              })}
+              {provided.placeholder}
             </div>
           )}
         </Droppable>

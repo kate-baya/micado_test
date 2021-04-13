@@ -3,13 +3,12 @@ import { connect } from 'react-redux'
 import { mean } from 'd3'
 
 function Average({ data, cat }) {
-  const values = []
-  data.map(d => values.push(d.value))
+  const valueAverage = mean(data.map(d => d.value))
 
   return (
     <div className='columns'>
       <div className='column'>
-        <h1 className='is-size-5 has-text-weight-semibold'>{mean(values)}</h1>
+        <h1 className='is-size-5 has-text-weight-semibold'>{valueAverage}</h1>
         <p className='has-text-weight-medium'>Average {cat}</p>
       </div>
       <div className='column is-narrow'>

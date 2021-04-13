@@ -32,18 +32,18 @@ function Analytics() {
         <Droppable droppableId='components' direction='horizontal'>
           {(provided) => (
             <div {...provided.droppableProps} ref={provided.innerRef} className='columns is-multiline'>
-            {components.map((c, idx) => {
-              return <Draggable key={c.id} draggableId={c.id} index={idx}>
-                {(provided) => (
-                  <div {...provided.draggableProps} {...provided.dragHandleProps} ref={provided.innerRef} className='column is-half'> 
-                  <div className='box'>
-                  <c.name />
-                  </div>
-                  </div>
-                )}
+              {components.map((c, idx) => {
+                return <Draggable key={c.id} draggableId={c.id} index={idx}>
+                  {(provided) => (
+                    <div {...provided.draggableProps} {...provided.dragHandleProps} ref={provided.innerRef} className='column is-half'> 
+                      <div className='box'>
+                        <c.name />
+                      </div>
+                    </div>
+                  )}
                 </Draggable>
-            })}
-            {provided.placeholder}
+              })}
+              {provided.placeholder}
             </div>
           )}
         </Droppable>

@@ -1,6 +1,6 @@
 import {RECEIVE_CAT} from '../actions/index'
 
-const initialState = 'Deceased'
+const initialState = 'Active'
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {

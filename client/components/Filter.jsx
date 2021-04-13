@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
 
-import { getValues, getTotal } from '../apis/covidDataApi'
-import { receiveData, receiveCat, receiveTotal, appendTotal } from '../actions/index'
+import { getValues } from '../apis/covidDataApi'
+import { receiveData, receiveCat } from '../actions/index'
 
 function Filter(props) {
   const [state, setState] = useState({
@@ -11,15 +11,9 @@ function Filter(props) {
     end: '2020-05-20',
   })
 
-  const array = []
-  const obj = {}
-
+  //dispatches og state... not necessary?? can set the init state in reducer
   useEffect(() => {
     props.dispatch(receiveCat(state.subSeries))
-    getTotal(state.subSeries, state.start, state.end)
-    .then(total => {
-      array.push(total)
-    })
   }, [])
 
   useEffect(() => {
@@ -31,11 +25,6 @@ function Filter(props) {
         console.log(err)
       })
     props.dispatch(receiveCat(state.subSeries))
-    props.subSeries.map(sub => getTotal(sub.sub_series_name, state.start, state.end)
-      .then(total => {
-        array.push(total)
-        console.log(array)
-      }))
   }, [state])
 
   const handleChange = (e) => {
@@ -74,22 +63,22 @@ function Filter(props) {
                   <form>
                     <div className='dates'>
                       <div className='start'>
-                      <label>Start Date:</label>
-                      <input
-                        type='date'
-                        name="start"
-                        value={state.start}
-                        onChange={handleChange}
-                      />
+                        <label>Start Date:</label>
+                        <input
+                          type='date'
+                          name="start"
+                          value={state.start}
+                          onChange={handleChange}
+                        />
                       </div>
                       <div>
-                      <label>End Date:</label>
-                      <input
-                        type='date'
-                        name="end"
-                        value={state.end}
-                        onChange={handleChange}
-                      />
+                        <label>End Date:</label>
+                        <input
+                          type='date'
+                          name="end"
+                          value={state.end}
+                          onChange={handleChange}
+                        />
                       </div>
                     </div>
                   </form>
@@ -105,7 +94,7 @@ function Filter(props) {
 
 const mapStateToProps = (state) => {
   return {
-    subSeries: state.subSeries
+    subSeries: state.subSeries,
   }
 }
 

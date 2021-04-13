@@ -1,17 +1,20 @@
 import React from 'react'
 import {connect} from 'react-redux'
+import PieChart from './PieChart'
 
-function SpaceFiller ({data}) {
+function SpaceFiller ({avg}) {
   return(
     <>
     <h1>Space Filler</h1>
+    
+    <PieChart />
     </>
   )
 }
 
 const mapStateToProps = (state) => {
   return {
-    data: state.data
+    avg: state.avg
   }
 }
 
