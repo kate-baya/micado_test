@@ -27,8 +27,7 @@ function Analytics() {
   }
 
   return (
-    <>
-      <h1>Graph</h1>
+    <div className='block'>
       <DragDropContext onDragEnd={handleOnDragEnd}>
         <Droppable droppableId='components' direction='horizontal'>
           {(provided) => (
@@ -36,7 +35,7 @@ function Analytics() {
             {components.map((c, idx) => {
               return <Draggable key={c.id} draggableId={c.id} index={idx}>
                 {(provided) => (
-                  <div {...provided.draggableProps} {...provided.dragHandleProps} ref={provided.innerRef} className='column'> 
+                  <div {...provided.draggableProps} {...provided.dragHandleProps} ref={provided.innerRef} className='column is-half'> 
                   <div className='box'>
                   <c.name />
                   </div>
@@ -49,7 +48,7 @@ function Analytics() {
           )}
         </Droppable>
       </DragDropContext>
-    </>
+    </div>
   )
 }
 

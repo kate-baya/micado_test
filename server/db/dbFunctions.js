@@ -12,12 +12,12 @@ function getSubSeries(db = database) {
   .select('sub_series_name')
 }
 
-//find total value for specifc dates/and sub_series
+//find total avg value for specifc dates/and sub_series
 function getTotalValue(sub_series, start, end, db = database) {
   return db('covidtestdata')
   .where('sub_series_name', sub_series)
   .whereBetween('parameter', [start, end])
-  .sum('value')
+  .avg('value')
 }
 
 //find value for specific dates/and sub_series

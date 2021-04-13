@@ -4,9 +4,7 @@ import { connect } from 'react-redux'
 import { getSubSeries } from '../apis/covidDataApi'
 import { receiveSubSeries } from '../actions/index'
 
-import Filter from './Filter'
-import Graph from './Graph'
-import Analytics from './Analytics'
+import Dashboard from './Dashboard'
 
 function App(props) {
 
@@ -26,15 +24,6 @@ function App(props) {
               <a className="navbar-item">
                 New Zealand Covid-19 Data
               </a>
-              <a className="navbar-item">
-                Documentation
-              </a>
-            </div>
-
-            <div className="navbar-end">
-              <div className="navbar-item">
-                <Filter />
-              </div>
             </div>
           </div>
         </div>
@@ -42,13 +31,10 @@ function App(props) {
 
       <section className="hero is-fullheight-with-navbar">
         <div className="hero-body">
-          <div>
-            <div>
-            <Analytics />
-            </div>
-            <div>
-            <Graph />
-            </div>
+          <div className='container'>
+          <div className='block'>
+            <Dashboard />
+          </div>
           </div>
         </div>
       </section>

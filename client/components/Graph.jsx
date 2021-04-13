@@ -5,7 +5,7 @@ import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd'
 import BarChart from './BarChart'
 import SpaceFiller from './SpaceFiller'
 
-function Dashboard() {
+function Graph() {
   const [components, updateComponents] = useState(
     [
       { id: '1', name: BarChart},
@@ -24,7 +24,6 @@ function Dashboard() {
 
   return (
     <>
-      <h1>Graph</h1>
       <DragDropContext onDragEnd={handleOnDragEnd}>
         <Droppable droppableId='components' direction='horizontal'>
           {(provided) => (
@@ -49,4 +48,4 @@ function Dashboard() {
   )
 }
 
-export default connect()(Dashboard)
+export default connect()(Graph)

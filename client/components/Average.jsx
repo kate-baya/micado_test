@@ -1,12 +1,31 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import { mean } from 'd3'
 
-function Average () {
+function Average({ data, cat }) {
+  const values = []
+  data.map(d => values.push(d.value))
+
   return (
-    <h1>
-      Average
-    </h1>
+    <div className='columns'>
+      <div className='column'>
+        <h1 className='is-size-5 has-text-weight-semibold'>{mean(values)}</h1>
+        <p className='has-text-weight-medium'>Average {cat}</p>
+      </div>
+      <div className='column is-narrow'>
+        <figure className="image is-64x64">
+          <img src="/images/virus.png" />
+        </figure>
+      </div>
+    </div>
   )
 }
 
-export default connect()(Average)
+const mapStateToProps = (state) => {
+  return {
+    data: state.data,
+    cat: state.cat
+  }
+}
+
+export default connect(mapStateToProps)(Average)
