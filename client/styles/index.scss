@@ -77,3 +77,15 @@ img {
     padding-top: 1rem;
   }
 }
+
+.marks {
+  circle {
+    fill: #137B80
+  };
+  path {
+    stroke: #137B80;
+    stroke-width: 5;
+    stroke-linejoin: round;
+    stroke-linecap: round;
+  }
+}

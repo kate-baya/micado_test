@@ -24,7 +24,6 @@ export function getAverageData(subSeries, settings) {
   })
 
   return Promise.all(retrievedData).then(res => {
-    console.log(res)
     return res
   })
 }

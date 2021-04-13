@@ -5,6 +5,7 @@ import { getSubSeries } from '../apis/covidDataApi'
 import { receiveSubSeries } from '../actions/index'
 
 import Dashboard from './Dashboard'
+import LineChart from './LineChart'
 
 function App(props) {
 
@@ -33,6 +34,7 @@ function App(props) {
         <div className="hero-body">
           <div className='container'>
             <Dashboard />
+          {/* <LineChart /> */}
           </div>
         </div>
       </section>
