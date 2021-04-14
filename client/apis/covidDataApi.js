@@ -27,9 +27,7 @@ export function getAverageData(settings) {
     Active: [],
   }
 
-  const arr = Object.keys(data)
-  console.log(arr)
-  const retrievedData = arr.map(key => {
+  const retrievedData = Object.keys(data).map(key => {
     return getAllValues(key, settings.start, settings.end, data)
   })
 

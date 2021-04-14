@@ -29,5 +29,5 @@ function findValue(sub_series, start, end, db = database) {
 module.exports = {
   getTotalValue,
   findValue,
-  getSubSeries
+  getSubSeries,
 }

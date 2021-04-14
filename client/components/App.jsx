@@ -8,14 +8,6 @@ import Dashboard from './Dashboard'
 // import LineChart from './LineChart'
 
 function App(props) {
-
-  useEffect(() => {
-    getSubSeries()
-      .then(res => {
-        props.dispatch(receiveSubSeries(res))
-      })
-  }, [])
-
   return (
     <div className='app'>
       <nav className="navbar">

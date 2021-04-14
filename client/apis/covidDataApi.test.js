@@ -1,6 +1,6 @@
 import nock from 'nock'
 
-import {getValues, getSubSeries, getAllValues } from './covidDataApi'
+import {getValues, getSubSeries, getAllValues, getCumulative } from './covidDataApi'
 
 afterAll(nock.restore) 
 afterEach(nock.cleanAll)

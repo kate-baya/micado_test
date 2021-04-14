@@ -1,10 +1,10 @@
 import React, {useEffect, useState} from 'react'
 import {connect} from 'react-redux'
 import PieChart from './PieChart'
-import {receiveAverages, getAverageData} from '../apis/covidDataApi'
+import {getAverageData} from '../apis/covidDataApi'
 import {min, max} from 'd3'
 
-function SpaceFiller ({settings, subSeries }) {
+function SpaceFiller ({settings}) {
   const [data, setState] = useState({
     recovered: [],
     deceased: [],

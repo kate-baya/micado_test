@@ -28,12 +28,11 @@ router.get('/:sub_series/:start/:end', (req, res) => {
   const sub_series = req.params.sub_series
   db.findValue(sub_series, start, end)
   .then(data => {
-    console.log(data)
     data.forEach(d => d.parameter = new Date(d.parameter))
-    console.log(data)
     res.json(data)
   })
   .catch(err => console.log(err))
 })
+
 
 module.exports = router

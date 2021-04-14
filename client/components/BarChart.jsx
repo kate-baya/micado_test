@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react'
+import React from 'react'
 import { connect } from 'react-redux'
 import { scaleBand, scaleLinear, max, format } from 'd3'
 import { AxisBottom } from './barChartLayout/AxisBottom'
