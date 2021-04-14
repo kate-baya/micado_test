@@ -3,6 +3,8 @@ import { connect } from 'react-redux'
 import { mean } from 'd3'
 
 function Average({ data, cat }) {
+
+  
   const valueAverage = mean(data.map(d => d.value))
 
   return (

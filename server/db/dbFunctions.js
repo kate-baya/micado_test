@@ -14,7 +14,7 @@ function getTotalValue(sub_series, start, end, db = database) {
   return db('covid_19_new_zealand')
   .where('sub_series_name', sub_series)
   .whereBetween('parameter', [start, end])
-  .avg('value')
+  .select()
 }
 
 //find value for specific dates/and sub_series
