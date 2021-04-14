@@ -1,6 +1,6 @@
 import nock from 'nock'
 
-import {getValues, getSubSeries, getAverages, getAverageData} from './covidDataApi'
+import {getValues, getSubSeries, getAllValues } from './covidDataApi'
 
 afterAll(nock.restore) 
 afterEach(nock.cleanAll)
@@ -40,17 +40,19 @@ describe.skip('getValues', () => {
 })
 
 
-describe('getAverages', () => {
-  const settings = {subSeries : 'Active', start: '2020-03-20', end: '2020-03-21'}
-  const mockValue = { subSeries: 'Active', value: 20 }
+describe.skip('getAllValues', () => {
+  const settings = {key : 'Active', start: '2020-03-20', end: '2020-03-21'}
+  const data = {
+    Active: []
+  }
+  const mockValue = {Active: [{ subSeries: 'Active', parameter: '2020-03-20', value: 20}, {subSeries: 'Active', parameter: '2020-03-21', value: 19}]}
   const scope = nock('http://localhost')
     .get(`/api/v1/testData/total/${settings.subSeries}/${settings.start}/${settings.end}`)
     .reply(201, mockValue)
   test('returns AverageData object from api depending on which subSeries is entered', () => {
-    return getAverages(settings.subSeries, settings.start, settings.end)
+    return getAllValues(settings.key, settings.start, settings.end, data)
       .then(res => {
-        expect(res).toEqual(20)
-        expect(scope.isDone()).toBe(true)
+        expect(res).toEqual(mockValue)
         return null
       })
     })
