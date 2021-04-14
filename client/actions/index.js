@@ -1,7 +1,6 @@
 export const RECEIVE_DATA = 'RECEIVE_DATA'
 export const RECEIVE_SUBSERIES = 'RECEIVE_SUBSERIES'
 export const RECEIVE_FILTER_OPTIONS = 'RECEIVE_FILTER_OPTIONS'
-export const RECEIVE_AVERAGES = 'RECEIVE_AVERAGES'
 
 export const receiveData = (data) => {
   return {
@@ -21,12 +20,5 @@ export const receiveFilterOptions = (settings) => {
   return {
     type: RECEIVE_FILTER_OPTIONS,
     settings: settings
-  }
-}
-
-export function receiveAverages(avg) {
-  return {
-  type: RECEIVE_AVERAGES,
-  avg: avg
   }
 }

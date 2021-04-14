@@ -11,7 +11,6 @@ function Filter(props) {
     end: '2020-05-20',
   })
 
-  //dispatches og state... not necessary?? can set the init state in reducer
   useEffect(() => {
     props.dispatch(receiveFilterOptions(state))
   }, [])
