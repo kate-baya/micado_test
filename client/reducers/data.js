@@ -2,7 +2,7 @@ import {RECEIVE_DATA} from '../actions/index'
 
 const initialState = []
 
-const reducer = (state = initialState, action) => {
+const dataReducer = (state = initialState, action) => {
   switch (action.type) {
     case RECEIVE_DATA:
       return action.data
@@ -12,4 +12,4 @@ const reducer = (state = initialState, action) => {
   }
 }
 
-export default reducer
+export default dataReducer

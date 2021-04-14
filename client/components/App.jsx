@@ -5,7 +5,7 @@ import { getSubSeries } from '../apis/covidDataApi'
 import { receiveSubSeries } from '../actions/index'
 
 import Dashboard from './Dashboard'
-import LineChart from './LineChart'
+// import LineChart from './LineChart'
 
 function App(props) {
 

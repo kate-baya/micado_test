@@ -1,3 +1,5 @@
+const path = require('path')
+
 module.exports = {
   development: {
     client: 'pg',
@@ -18,12 +20,14 @@ module.exports = {
 
   test: {
     client: 'pg',
-    connection:'postgres://localhost',
+    connection: {
+      filename: ':memory:'
+    },
     migrations: {
-      directory: './db/migrations'
+      directory: path.join(__dirname, 'migrations')
     },
     seeds: {
-      directory: './db/seeds/test'
+      directory: path.join(__dirname, 'seeds')
     },
     useNullAsDefault: true
   },
