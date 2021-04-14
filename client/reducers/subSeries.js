@@ -2,7 +2,7 @@ import {RECEIVE_SUBSERIES} from '../actions/index'
 
 const initialState = [{sub_series_name: 'Active'}, {sub_series_name: 'Deceased'}]
 
-const subSeriesReducer = (state = initialState, action) => {
+const reducer = (state = initialState, action) => {
   switch (action.type) {
     case RECEIVE_SUBSERIES:
       return action.subSeries
@@ -12,4 +12,4 @@ const subSeriesReducer = (state = initialState, action) => {
   }
 }
 
-export default subSeriesReducer
+export default reducer

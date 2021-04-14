@@ -3,7 +3,6 @@ export const RECEIVE_SUBSERIES = 'RECEIVE_SUBSERIES'
 export const RECEIVE_FILTER_OPTIONS = 'RECEIVE_FILTER_OPTIONS'
 
 export const receiveData = (data) => {
-  console.log(data)
   return {
       type: RECEIVE_DATA,
       data: data
