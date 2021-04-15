@@ -1,5 +1,5 @@
 import request from 'superagent'
-import { receiveData, receiveSubSeries } from '../actions/index'
+import { receiveData, receiveSubSeries, receiveAllData } from '../actions/index'
 const rootUrl = '/api/v1'
 
 
@@ -27,12 +27,14 @@ export function getCumulative(subSeries, start, end) {
     })
 }
 
-export function getAverageData(settings) {
+export function getAverageData(settings, dispatch) {
 
   const data = {
-    Recovered: [],
-    Deceased: [],
-    Active: [],
+    'Recovered': [],
+    'Deceased': [],
+    'Active': [],
+    'Total tests (cumulative)': [],
+    'Tests by day': []
   }
 
   const retrievedData = Object.keys(data).map(key => {
@@ -40,7 +42,7 @@ export function getAverageData(settings) {
   })
 
   return Promise.all(retrievedData).then(res => {
-    return res[0]
+    return dispatch(receiveAllData(res[0]))
   })
 }
 

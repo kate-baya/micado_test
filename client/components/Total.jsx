@@ -30,7 +30,7 @@ function Total({ dispatch, settings }) {
 
 const mapStateToProps = (state) => {
   return {
-    data: state.data,
+    data: state.filteredData,
     cat: state.cat,
     settings: state.settings,
     subSeries: state.subSeries

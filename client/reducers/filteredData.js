@@ -1,11 +1,11 @@
-import {RECEIVE_DATA} from '../actions/index'
+import {RECEIVE_FILTERED_DATA} from '../actions/index'
 
 const initialState = []
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
-    case RECEIVE_DATA:
-      return action.data
+    case RECEIVE_FILTERED_DATA:
+      return action.filteredData
 
     default:
       return state
