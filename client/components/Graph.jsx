@@ -3,12 +3,12 @@ import { connect } from 'react-redux'
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd'
 
 import BarChart from './BarChart'
-import SpaceFiller from './SpaceFiller'
+import PieChartFormatting from './PieChartFormatting'
 
 function Graph() {
   const [components, updateComponents] = useState(
     [{ id: '1', name: BarChart},
-     { id: '2', name: SpaceFiller}]
+     { id: '2', name: PieChartFormatting}]
   )
 
   function handleOnDragEnd(result) {

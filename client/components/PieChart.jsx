@@ -2,9 +2,8 @@ import React, { useEffect } from 'react';
 import { connect } from 'react-redux'
 import * as d3 from 'd3';
 
-function PieChart({ data }) {
+function PieChart({ data, settings }) {
 
-  console.log(data)
   const outerRadius = 100
   const innerRadius = 70
 
@@ -59,18 +58,6 @@ function PieChart({ data }) {
       .style('fill', (_, i) => colorScale(i))
       .style('stroke', '#ffffff')
       .style('stroke-width', 0);
-
-    // Append text labels
-    // arc
-    //   .append('text')
-    //   .attr('text-anchor', 'middle')
-    //   .attr('alignment-baseline', 'middle')
-    //   .text((d) => d.data.subSeries)
-    //   .style('fill', '#ffffff')
-    //   .attr('transform', (d) => {
-    //     const [x, y] = arcGenerator.centroid(d);
-    //     return `translate(${x}, ${y})`;
-    //   })
   }
 
   return (
@@ -99,6 +86,9 @@ function PieChart({ data }) {
         })}
         </tbody>  
       </table>
+      <p>extra text to</p>
+      <p>last one</p>
+      <p>r</p>
       </div>
 
 
@@ -106,4 +96,10 @@ function PieChart({ data }) {
   )
 }
 
-export default connect()(PieChart)
+const mapStateToProps = (state) => {
+  return {
+    settings: state.settings
+  }
+}
+
+export default connect(mapStateToProps)(PieChart)

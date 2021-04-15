@@ -12,16 +12,6 @@ const xAxisTickFormat = format(".2s")
 function BarChart({ data }) {
   const myRef = useRef(null)
 
-  console.log(data)
-  
-  const edit = data.map(d => d.parameter.substring(0,10))
-  console.log(edit)
-
-  const parse = timeFormat("%d %m, %y")
-  const parsed = data.map(d => new Date(d.parameter))
-  console.log(parsed)
-
-
   const parameterLength = []
   data.map(d => parameterLength.push(d.parameter))
   

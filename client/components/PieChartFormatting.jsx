@@ -4,7 +4,7 @@ import PieChart from './PieChart'
 import {getAverageData} from '../apis/covidDataApi'
 import {min, max} from 'd3'
 
-function SpaceFiller ({settings, dispatch, allData}) {
+function PieChartFormatting ({settings, dispatch, allData}) {
   useEffect(() => {
     getAverageData(settings, dispatch)
   },[settings])
@@ -33,7 +33,10 @@ function SpaceFiller ({settings, dispatch, allData}) {
 
   return(
     <>
+    <span>
     <h1>New Zealand Covid Cases</h1>
+    <p>{settings.start} - {settings.end}</p>
+    </span>
     <PieChart data={pieChartData}/>
     </>
   )
@@ -47,4 +50,4 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps)(SpaceFiller)
+export default connect(mapStateToProps)(PieChartFormatting)
