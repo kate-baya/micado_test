@@ -89,3 +89,12 @@ img {
     stroke-linecap: round;
   }
 }
+
+.fixedHeight {
+  height: 582.67px;
+  overflow: auto;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
