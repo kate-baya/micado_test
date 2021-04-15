@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react'
+import React, {useEffect} from 'react'
 import {connect} from 'react-redux'
 import PieChart from './PieChart'
 import {getAverageData} from '../apis/covidDataApi'
@@ -26,14 +26,14 @@ function SpaceFiller ({settings, dispatch, allData}) {
   const minActive = min(activeValue)
 
   const pieChartData = [
-    {subSeries: 'Active', value: maxActive - minActive}, 
-    {subSeries: 'Recovered', value: maxRecovered - minRecovered}, 
-    {subSeries: 'Deceased', value: maxDeceased - minDeceased}
+    {subSeries: 'Active', value: maxActive - minActive, img: '/images/purple.png'}, 
+    {subSeries: 'Recovered', value: maxRecovered - minRecovered, img: '/images/blue.png'}, 
+    {subSeries: 'Deceased', value: maxDeceased - minDeceased, img: '/images/green.png'}
   ]
 
   return(
     <>
-    <h1>Space Filler</h1>
+    <h1>New Zealand Covid Cases</h1>
     <PieChart data={pieChartData}/>
     </>
   )
