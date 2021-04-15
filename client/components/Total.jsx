@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import { connect } from 'react-redux'
-import { getValues } from '../apis/covidDataApi'
+import { getCumulative } from '../apis/covidDataApi'
 
-function Total({ settings }) {
+function Total({ dispatch, settings }) {
   const [totalValue, setTotalValue] = useState({})
 
   useEffect(() => {
-    getValues('Total tests (cumulative)', settings.start, settings.end)
+    getCumulative('Total tests (cumulative)', settings.start, settings.end)
       .then(total => {
         return setTotalValue(total[total.length-1])})
   },[settings.end])

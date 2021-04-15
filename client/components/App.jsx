@@ -1,13 +1,10 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { connect } from 'react-redux'
-
-import { getSubSeries } from '../apis/covidDataApi'
-import { receiveSubSeries } from '../actions/index'
 
 import Dashboard from './Dashboard'
 // import LineChart from './LineChart'
 
-function App(props) {
+function App() {
   return (
     <div className='app'>
       <nav className="navbar">

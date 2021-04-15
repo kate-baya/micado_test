@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
 
 import { getValues, getSubSeries } from '../apis/covidDataApi'
-import { receiveData, receiveFilterOptions, receiveSubSeries } from '../actions/index'
+import { receiveFilterOptions } from '../actions/index'
 
 function Filter(props) {
   const [state, setState] = useState({
@@ -13,27 +13,17 @@ function Filter(props) {
     })
 
   useEffect(() => {
-    getSubSeries()
-      .then(res => {
-        props.dispatch(receiveSubSeries(res))
-      })
+    getValues(state.subSeries, state.start, state.end, props.dispatch) 
+    getSubSeries(props.dispatch)
   }, [])
 
   const handleChange = (e) => {
-    e.preventDefault()
     const { name, value } = e.target
     setState({ ...state, [name]: value, filter: true})
   }
 
   const handleSend = () => {
-    console.log('sent')
-    getValues(state.subSeries, state.start, state.end)
-    .then(data => {
-      props.dispatch(receiveData(data))
-    })
-    .catch(err => {
-      console.log(err)
-    })
+    getValues(state.subSeries, state.start, state.end, props.dispatch )
     props.dispatch(receiveFilterOptions(state))
     setState({...state, filter: false})
   }
@@ -105,8 +95,7 @@ function Filter(props) {
 const mapStateToProps = (state) => {
   return {
     subSeries: state.subSeries,
-    settings: state.settings
   }
 }
 
-export default connect(mapStateToProps)(Filter)
+export default connect(mapStateToProps, null)(Filter)

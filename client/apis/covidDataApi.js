@@ -1,17 +1,25 @@
 import request from 'superagent'
-
+import { receiveData, receiveSubSeries } from '../actions/index'
 const rootUrl = '/api/v1'
 
 
-export function getSubSeries() {
+export function getSubSeries(dispatch) {
   return request
     .get(`${rootUrl}/testData/subSeries`)
     .then(res => {
-      return res.body
+      return dispatch(receiveSubSeries(res.body))
     })
 }
 
-export function getValues(subSeries, start, end) {
+export function getValues(subSeries, start, end, dispatch) {
+  return request
+    .get(`${rootUrl}/testData/${subSeries}/${start}/${end}`)
+    .then(res => {
+      return dispatch(receiveData(res.body))
+    })
+}
+
+export function getCumulative(subSeries, start, end) {
   return request
     .get(`${rootUrl}/testData/${subSeries}/${start}/${end}`)
     .then(res => {
