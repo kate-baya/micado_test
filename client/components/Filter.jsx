@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import { getValues, getSubSeries } from '../apis/covidDataApi'
 import { receiveFilterOptions } from '../actions/index'
 
-function Filter(props) {
+function Filter({subSeries, dispatch}) {
   const [state, setState] = useState({
       subSeries: 'Recovered',
       start: '2020-03-01',
@@ -13,8 +13,8 @@ function Filter(props) {
     })
 
   useEffect(() => {
-    getValues(state.subSeries, state.start, state.end, props.dispatch) 
-    getSubSeries(props.dispatch)
+    getValues(state.subSeries, state.start, state.end, dispatch) 
+    getSubSeries(dispatch)
   }, [])
 
   const handleChange = (e) => {
@@ -23,8 +23,8 @@ function Filter(props) {
   }
 
   const handleSend = () => {
-    getValues(state.subSeries, state.start, state.end, props.dispatch )
-    props.dispatch(receiveFilterOptions(state))
+    getValues(state.subSeries, state.start, state.end, dispatch )
+    dispatch(receiveFilterOptions(state))
     setState({...state, filter: false})
   }
 
@@ -46,7 +46,7 @@ function Filter(props) {
               <div className='columns'>
                 <div className='column content'>
                   <ul>
-                    {props.subSeries.map((e, idx) =>
+                    {subSeries.map((e, idx) =>
                       <li key={idx}>
                         <span 
                         className={'tag' + (state.subSeries === e.sub_series_name ? ' is-primary' : '')} 

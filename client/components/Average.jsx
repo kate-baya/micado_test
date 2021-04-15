@@ -24,7 +24,7 @@ function Average({ data, cat }) {
 
 const mapStateToProps = (state) => {
   return {
-    data: state.data,
+    data: state.filteredData,
     cat: state.cat
   }
 }
