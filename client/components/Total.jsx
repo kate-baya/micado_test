@@ -1,16 +1,22 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { connect } from 'react-redux'
-import { sum } from 'd3'
+import { getCumulative } from '../apis/covidDataApi'
 
-function Total({ data, cat }) {
-  const valueSum = sum(data.map(d => d.value))
+function Total({ dispatch, settings }) {
+  const [totalValue, setTotalValue] = useState({})
+
+  useEffect(() => {
+    getCumulative('Total tests (cumulative)', settings.start, settings.end)
+      .then(total => {
+        return setTotalValue(total[total.length-1])})
+  },[settings.end])
 
   return (
     <>
       <div className='columns'>
         <div className='column'>
-          <h1 className='is-size-5 has-text-weight-semibold'>{valueSum}</h1>
-          <p className='has-text-weight-medium'>Total {cat}</p>
+          <h1 className='is-size-5 has-text-weight-semibold'>{totalValue.value}</h1>
+          <p className='has-text-weight-medium'>Total Tests (Cumulative)</p>
         </div>
         <div className='column is-narrow'>
           <figure className="image is-64x64">
@@ -25,7 +31,9 @@ function Total({ data, cat }) {
 const mapStateToProps = (state) => {
   return {
     data: state.data,
-    cat: state.cat
+    cat: state.cat,
+    settings: state.settings,
+    subSeries: state.subSeries
   }
 }
 

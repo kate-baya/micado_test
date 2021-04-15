@@ -1,41 +1,38 @@
 import React, { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
 
-import { getValues } from '../apis/covidDataApi'
-import { receiveData, receiveFilterOptions } from '../actions/index'
+import { getValues, getSubSeries } from '../apis/covidDataApi'
+import { receiveFilterOptions } from '../actions/index'
 
 function Filter(props) {
   const [state, setState] = useState({
-    subSeries: 'Deceased',
-    start: '2020-04-30',
-    end: '2020-05-20',
-  })
+      subSeries: 'Recovered',
+      start: '2020-03-01',
+      end: '2021-02-15',
+      filter: false
+    })
 
   useEffect(() => {
-    props.dispatch(receiveFilterOptions(state))
+    getValues(state.subSeries, state.start, state.end, props.dispatch) 
+    getSubSeries(props.dispatch)
   }, [])
-
-  useEffect(() => {
-    getValues(state.subSeries, state.start, state.end)
-      .then(data => {
-        props.dispatch(receiveData(data))
-      })
-      .catch(err => {
-        console.log(err)
-      })
-    props.dispatch(receiveFilterOptions(state))
-  }, [state])
 
   const handleChange = (e) => {
     const { name, value } = e.target
-    return setState({ ...state, [name]: value })
+    setState({ ...state, [name]: value, filter: true})
   }
-  
+
+  const handleSend = () => {
+    getValues(state.subSeries, state.start, state.end, props.dispatch )
+    props.dispatch(receiveFilterOptions(state))
+    setState({...state, filter: false})
+  }
+
   return (
     <>
-      <div className="dropdown is-hoverable is-right">
+      <div className={"dropdown is-right" + (state.filter ? ' is-active' : '')}>
         <div className="dropdown-trigger">
-          <button className="button is-small" aria-haspopup="true" aria-controls="dropdown-menu">
+          <button className="button is-small" aria-haspopup="true" aria-controls="dropdown-menu" onClick={() => setState({...state, filter: true})}>
             <span>Filter</span>
             <span className="icon is-small">
               <i className="fas fa-angle-down" aria-hidden="true" />
@@ -51,9 +48,12 @@ function Filter(props) {
                   <ul>
                     {props.subSeries.map((e, idx) =>
                       <li key={idx}>
-                        <a onClick={() => setState({ ...state, subSeries: e.sub_series_name })} href="#">
+                        <span 
+                        className={'tag' + (state.subSeries === e.sub_series_name ? ' is-primary' : '')} 
+                        onClick={() => setState({...state, subSeries: e.sub_series_name, filter: true})} href="#"
+                        >
                           {e.sub_series_name}
-                        </a>
+                        </span>
                       </li>
                     )}
                   </ul>
@@ -81,6 +81,7 @@ function Filter(props) {
                       </div>
                     </div>
                   </form>
+                  <button onClick={handleSend}>send</button>       
                 </div>
               </div>
             </div>
@@ -94,8 +95,7 @@ function Filter(props) {
 const mapStateToProps = (state) => {
   return {
     subSeries: state.subSeries,
-    settings: state.settings
   }
 }
 
-export default connect(mapStateToProps)(Filter)
+export default connect(mapStateToProps, null)(Filter)
