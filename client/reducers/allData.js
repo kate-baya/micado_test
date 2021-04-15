@@ -1,6 +1,16 @@
 import {RECEIVE_ALL_DATA} from '../actions/index'
 
-const initialState = []
+const initialState = {
+  Active: [
+    {}
+  ],
+  Recovered: [
+    {}
+  ],
+  Deceased: [
+    {}
+  ],
+}
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {

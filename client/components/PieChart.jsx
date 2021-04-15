@@ -3,6 +3,8 @@ import { connect } from 'react-redux'
 import * as d3 from 'd3';
 
 function PieChart({data}) {
+
+  console.log(data)
       const outerRadius = 100
       const innerRadius = 70
 

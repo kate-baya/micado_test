@@ -4,30 +4,17 @@ import PieChart from './PieChart'
 import {getAverageData} from '../apis/covidDataApi'
 import {min, max} from 'd3'
 
-function SpaceFiller ({settings}) {
-  const [data, setState] = useState({
-    recovered: [],
-    deceased: [],
-    active: []
-  })
-
+function SpaceFiller ({settings, dispatch, allData}) {
   useEffect(() => {
-    getAverageData(settings)
-      .then(covidData => {
-        return setState({ 
-          recovered: covidData.Recovered, 
-          deceased: covidData.Deceased, 
-          active: covidData.Active 
-        })
-      })
+    getAverageData(settings, dispatch)
   },[settings])
 
   const recoveredValue = []
   const deceasedValue = []
   const activeValue = []
-  data.recovered.map(d => recoveredValue.push(d.value))
-  data.deceased.map(d => deceasedValue.push(d.value))
-  data.active.map(d => activeValue.push(d.value))
+  allData.Recovered.map(d => recoveredValue.push(d.value))
+  allData.Deceased.map(d => deceasedValue.push(d.value))
+  allData.Active.map(d => activeValue.push(d.value))
 
   const maxRecovered = max(recoveredValue)
   const minRecovered = min(recoveredValue)
@@ -55,7 +42,8 @@ function SpaceFiller ({settings}) {
 const mapStateToProps = (state) => {
   return {
     subSeries: state.subSeries,
-    settings: state.settings
+    settings: state.settings,
+    allData: state.allData
   }
 }
 
