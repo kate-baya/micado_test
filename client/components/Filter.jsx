@@ -32,15 +32,15 @@ function Filter({subSeries, settings, dispatch}) {
     <>
       <div className={"dropdown is-right" + (state.filter ? ' is-active' : '')}>
         <div className="dropdown-trigger">
-          <button className="button is-small mr-5" aria-haspopup="true" aria-controls="dropdown-menu" onClick={() => setState({...state, filter: true})}>
+          <button className="button mr-5" aria-haspopup="true" aria-controls="dropdown-menu" onClick={() => setState({...state, filter: true})}>
             <span>{settings.subSeries}</span>
-            <span className="icon is-small">
+            <span className="icon">
               <i className="fas fa-angle-down" aria-hidden="true" />
             </span>
           </button>
-          <button className="button is-small" aria-haspopup="true" aria-controls="dropdown-menu" onClick={() => setState({...state, filter: true})}>
+          <button className="button" aria-haspopup="true" aria-controls="dropdown-menu" onClick={() => setState({...state, filter: true})}>
             <span>{new Date(settings.start).toString().substring(4, 15)} - {new Date(settings.end).toString().substring(4, 15)}</span>
-            <span className="icon is-small">
+            <span className="icon">
               <i className="fas fa-angle-down" aria-hidden="true" />
             </span>
           </button>

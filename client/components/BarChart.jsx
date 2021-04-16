@@ -25,8 +25,6 @@ function BarChart({ data }) {
   const xValue = d => d.value
   
   const yAxisTickFormat = timeFormat("%y %m, %d")
-  // const date = data.map(d => yAxisTickFormat(d.parameter))
-  // console.log(date)
 
   let xAxisLabel
   if (data && data[0]) {

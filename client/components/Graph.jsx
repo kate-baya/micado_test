@@ -22,6 +22,7 @@ function Graph() {
 
   return (
     <>
+    <h1 className='is-size-4 has-text-weight-bold'>Charts</h1>
       <DragDropContext onDragEnd={handleOnDragEnd}>
         <Droppable droppableId='components' direction='horizontal'>
           {(provided) => (

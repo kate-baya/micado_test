@@ -26,7 +26,7 @@ function Dashboard({settings}) {
   return (
     <>
       <div className='block level has-text-weight-semibold'>
-        <h1 className='is-size-4'>Dashboard</h1>
+        <p className='is-size-4'>Dashboard | {new Date(settings.start).toString().substring(4, 15)} - {new Date(settings.end).toString().substring(4, 15)}</p>
         <Filter />
       </div>
       <DragDropContext onDragEnd={handleOnDragEnd}>
@@ -36,9 +36,10 @@ function Dashboard({settings}) {
               {components.map((c, idx) => {
                 return <Draggable key={c.id} draggableId={c.id} index={idx}>
                   {(provided) => (
-                    <div {...provided.draggableProps} {...provided.dragHandleProps} ref={provided.innerRef} className='container is-widescreen'>
+                    <div {...provided.draggableProps} ref={provided.innerRef} className='container is-widescreen'>
                       <div className="notification is-primary mb-4 p-4">
                         <c.name />
+                      <a className='level-right'><i className="fas fa-arrows-alt"  {...provided.dragHandleProps}/></a>
                       </div>
                     </div>
                   )}

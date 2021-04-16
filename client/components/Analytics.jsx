@@ -28,7 +28,7 @@ function Analytics({settings}) {
 
   return (
     <div className='block'>
-      <p className='has-text-right has-text-weight-bold pb-2'>{new Date(settings.start).toString().substring(4, 15)} - {new Date(settings.end).toString().substring(4, 15)}</p>
+      <h1 className='is-size-4 has-text-weight-bold'>Analytics</h1>
       <DragDropContext onDragEnd={handleOnDragEnd}>
         <Droppable droppableId='components' direction='horizontal'>
           {(provided) => (
