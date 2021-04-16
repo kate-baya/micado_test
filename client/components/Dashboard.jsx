@@ -5,11 +5,13 @@ import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd'
 import Analytics from './Analytics'
 import Graph from './Graph'
 import Filter from './Filter'
+import Table from './Table'
 
-function Dashboard() {
+function Dashboard({settings}) {
   const [components, updateComponents] = useState(
     [{ id: '1', name: Analytics},
-     { id: '2', name: Graph}]
+     { id: '2', name: Graph},
+     {id: '3', name: Table}]
   )
     
   function handleOnDragEnd(result) {
@@ -23,8 +25,8 @@ function Dashboard() {
   
   return (
     <>
-      <div className='block level'>
-        <h1 className='is-size-4 has-text-weight-semibold'>Dashboard</h1>
+      <div className='block level has-text-weight-semibold'>
+        <p className='is-size-4'>Dashboard | {new Date(settings.start).toString().substring(4, 15)} - {new Date(settings.end).toString().substring(4, 15)}</p>
         <Filter />
       </div>
       <DragDropContext onDragEnd={handleOnDragEnd}>
@@ -34,9 +36,10 @@ function Dashboard() {
               {components.map((c, idx) => {
                 return <Draggable key={c.id} draggableId={c.id} index={idx}>
                   {(provided) => (
-                    <div {...provided.draggableProps} {...provided.dragHandleProps} ref={provided.innerRef} className='container is-widescreen'>
+                    <div {...provided.draggableProps} ref={provided.innerRef} className='container is-widescreen'>
                       <div className="notification is-primary mb-4 p-4">
                         <c.name />
+                      <a className='level-right'><i className="fas fa-arrows-alt"  {...provided.dragHandleProps}/></a>
                       </div>
                     </div>
                   )}
@@ -51,4 +54,10 @@ function Dashboard() {
   )
 }
 
-export default connect()(Dashboard)
+const mapStateToProps = (state) => {
+  return {
+    settings: state.settings
+  }
+}
+
+export default connect(mapStateToProps)(Dashboard)

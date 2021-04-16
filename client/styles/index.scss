@@ -63,7 +63,8 @@ html {
 }
 
 .border {
-  border: 2px solid;
+  border-bottom: 1px solid;
+  opacity: 50
 }
 
 img {
@@ -88,4 +89,17 @@ img {
     stroke-linejoin: round;
     stroke-linecap: round;
   }
+}
+
+.fixedHeight {
+  height: 634.667px;
+  overflow: auto;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+.bottom-border {
+  border-bottom: 3px solid;
 }

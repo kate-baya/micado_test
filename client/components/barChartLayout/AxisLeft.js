@@ -9,7 +9,7 @@ export const AxisLeft = ({yScale}) =>
         dy='.32em'
         y={yScale(tickValue) + yScale.bandwidth() / 2}
       >
-        {tickValue}
+        {new Date(tickValue).toString().substring(4, 15)}
       </text>
     </g> 
   ))
