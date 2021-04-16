@@ -39,7 +39,7 @@ function Filter({subSeries, settings, dispatch}) {
             </span>
           </button>
           <button className="button is-small" aria-haspopup="true" aria-controls="dropdown-menu" onClick={() => setState({...state, filter: true})}>
-            <span>from: {settings.start} to: {settings.end}</span>
+            <span>{new Date(settings.start).toString().substring(4, 15)} - {new Date(settings.end).toString().substring(4, 15)}</span>
             <span className="icon is-small">
               <i className="fas fa-angle-down" aria-hidden="true" />
             </span>

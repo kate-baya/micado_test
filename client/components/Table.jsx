@@ -4,15 +4,7 @@ import {connect} from 'react-redux'
 import LoadData from './LoadData'
 
 function Table ({allData}) {
-  // console.log(allData)
   const testsByDay = allData['Tests by day']
-  // const test = []
-  // const fuckThis = testsByDay.map(d => d.value) 
-  // console.log(fuckThis)
-
-  // const data = [{}]
-  // allData.Recovered.map(d => data.push(d))
-  // console.log(data)
 
   return (
     <>

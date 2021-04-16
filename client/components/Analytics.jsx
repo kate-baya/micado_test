@@ -7,7 +7,7 @@ import Total from './Total'
 import MinMax from './MinMax'
 import Welcome from './Welcome'
 
-function Analytics() {
+function Analytics({settings}) {
   const [components, updateComponents] = useState(
     [
       { id: '1', name: Welcome},
@@ -28,6 +28,7 @@ function Analytics() {
 
   return (
     <div className='block'>
+      <p className='has-text-right has-text-weight-bold pb-2'>{new Date(settings.start).toString().substring(4, 15)} - {new Date(settings.end).toString().substring(4, 15)}</p>
       <DragDropContext onDragEnd={handleOnDragEnd}>
         <Droppable droppableId='components' direction='horizontal'>
           {(provided) => (
@@ -52,4 +53,10 @@ function Analytics() {
   )
 }
 
-export default connect()(Analytics)
+const mapStateToProps = (state) => {
+  return {
+    settings: state.settings
+  }
+}
+
+export default connect(mapStateToProps)(Analytics)
