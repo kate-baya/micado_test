@@ -11,6 +11,9 @@ function App() {
         <div className="container">
           <div id="navMenu" className="navbar-menu">
             <div className="navbar-start">
+              <figure className=" navbar-item image is-64x64">
+                <img src="/images/newZealand.png" />
+              </figure>
               <a className="navbar-item">
                 New Zealand Covid-19 Data
               </a>
@@ -23,7 +26,7 @@ function App() {
         <div className="hero-body">
           <div className='container'>
             <Dashboard />
-          {/* <LineChart /> */}
+            {/* <LineChart /> */}
           </div>
         </div>
       </section>

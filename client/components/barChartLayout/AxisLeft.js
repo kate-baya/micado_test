@@ -1,9 +1,8 @@
 import React from 'react'
 
-export const AxisLeft = ({yScale, tickFormat}) =>
+export const AxisLeft = ({yScale}) =>
   yScale.domain().map(tickValue => (
     <g className='tick' key={tickValue}>
-      {console.log(new Date(tickValue))}
       <text 
         style={{textAnchor: 'end'}}
         x={-3}

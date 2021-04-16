@@ -5,11 +5,13 @@ import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd'
 import Analytics from './Analytics'
 import Graph from './Graph'
 import Filter from './Filter'
+import Table from './Table'
 
-function Dashboard() {
+function Dashboard({settings}) {
   const [components, updateComponents] = useState(
     [{ id: '1', name: Analytics},
-     { id: '2', name: Graph}]
+     { id: '2', name: Graph},
+     {id: '3', name: Table}]
   )
     
   function handleOnDragEnd(result) {
@@ -23,8 +25,8 @@ function Dashboard() {
   
   return (
     <>
-      <div className='block level'>
-        <h1 className='is-size-4 has-text-weight-semibold'>Dashboard</h1>
+      <div className='block level has-text-weight-semibold'>
+        <h1 className='is-size-4'>Dashboard</h1>
         <Filter />
       </div>
       <DragDropContext onDragEnd={handleOnDragEnd}>
@@ -51,4 +53,10 @@ function Dashboard() {
   )
 }
 
-export default connect()(Dashboard)
+const mapStateToProps = (state) => {
+  return {
+    settings: state.settings
+  }
+}
+
+export default connect(mapStateToProps)(Dashboard)

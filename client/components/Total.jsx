@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { connect } from 'react-redux'
 import { getCumulative } from '../apis/covidDataApi'
 
-function Total({ dispatch, settings }) {
+function Total({ settings }) {
   const [totalValue, setTotalValue] = useState({})
 
   useEffect(() => {

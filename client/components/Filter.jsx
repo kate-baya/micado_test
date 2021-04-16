@@ -4,10 +4,10 @@ import { connect } from 'react-redux'
 import { getValues, getSubSeries } from '../apis/covidDataApi'
 import { receiveFilterOptions } from '../actions/index'
 
-function Filter({subSeries, dispatch}) {
+function Filter({subSeries, settings, dispatch}) {
   const [state, setState] = useState({
-      subSeries: 'Recovered',
-      start: '2020-03-01',
+      subSeries: 'Active',
+      start: '2021-02-08',
       end: '2021-02-15',
       filter: false
     })
@@ -32,8 +32,14 @@ function Filter({subSeries, dispatch}) {
     <>
       <div className={"dropdown is-right" + (state.filter ? ' is-active' : '')}>
         <div className="dropdown-trigger">
+          <button className="button is-small mr-5" aria-haspopup="true" aria-controls="dropdown-menu" onClick={() => setState({...state, filter: true})}>
+            <span>{settings.subSeries}</span>
+            <span className="icon is-small">
+              <i className="fas fa-angle-down" aria-hidden="true" />
+            </span>
+          </button>
           <button className="button is-small" aria-haspopup="true" aria-controls="dropdown-menu" onClick={() => setState({...state, filter: true})}>
-            <span>Filter</span>
+            <span>from: {settings.start} to: {settings.end}</span>
             <span className="icon is-small">
               <i className="fas fa-angle-down" aria-hidden="true" />
             </span>
@@ -95,6 +101,7 @@ function Filter({subSeries, dispatch}) {
 const mapStateToProps = (state) => {
   return {
     subSeries: state.subSeries,
+    settings: state.settings
   }
 }
 
