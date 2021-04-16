@@ -2,10 +2,10 @@ import React, { useState } from 'react'
 import { connect } from 'react-redux'
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd'
 
-import Average from './Average'
-import Total from './Total'
-import MinMax from './MinMax'
-import Welcome from './Welcome'
+import Average from './analyticsModules/Average'
+import Total from './analyticsModules/Total'
+import MinMax from './analyticsModules/MinMax'
+import Welcome from './analyticsModules/Welcome'
 
 function Analytics({settings}) {
   const [components, updateComponents] = useState(

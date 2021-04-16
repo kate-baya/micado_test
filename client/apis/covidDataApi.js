@@ -19,14 +19,6 @@ export function getValues(subSeries, start, end, dispatch) {
     })
 }
 
-export function getCumulative(subSeries, start, end) {
-  return request
-    .get(`${rootUrl}/testData/${subSeries}/${start}/${end}`)
-    .then(res => {
-      return res.body
-    })
-}
-
 export function getAverageData(settings, dispatch) {
 
   const data = {
