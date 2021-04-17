@@ -2,7 +2,8 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { max, min } from 'd3'
 
-function MinMax({ data, settings }) {
+function MinMax({ settings, allData}) {
+  const data = allData[settings.subSeries]
   const minValue = min(data.map(d => d.value))
   const maxValue = max(data.map(d => d.value))
 
@@ -23,8 +24,8 @@ function MinMax({ data, settings }) {
 
 const mapStateToProps = (state) => {
   return {
-    data: state.filteredData,
-    settings: state.settings
+    settings: state.settings,
+    allData: state.allData
   }
 }
 

@@ -7,7 +7,7 @@ import Total from './analyticsModules/Total'
 import MinMax from './analyticsModules/MinMax'
 import Welcome from './analyticsModules/Welcome'
 
-function Analytics({settings}) {
+function Analytics() {
   const [components, updateComponents] = useState(
     [
       { id: '1', name: Welcome},
@@ -53,10 +53,4 @@ function Analytics({settings}) {
   )
 }
 
-const mapStateToProps = (state) => {
-  return {
-    settings: state.settings
-  }
-}
-
-export default connect(mapStateToProps)(Analytics)
+export default connect()(Analytics)

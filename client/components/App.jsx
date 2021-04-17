@@ -1,10 +1,30 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import { connect } from 'react-redux'
+import {getAllData} from '../apis/covidDataApi'
+import {receiveFilteredData} from '../actions/index'
 
 import Dashboard from './Dashboard'
+import { dispatch } from 'd3-dispatch'
 // import LineChart from './LineChart'
 
-function App() {
+function App({settings, dispatch, allData}) {
+  const data = allData[settings.subSeries]
+  useEffect(() => {
+    getAllData(settings, dispatch)
+  },[settings])
+
+  if (data) {
+    return <LoadedApp data={data} dispatch={dispatch} settings={settings}/>
+  }
+  return '...Loading Dashboard'
+}
+
+function LoadedApp({data, dispatch, settings}) {
+  
+  useEffect(() => {
+    dispatch(receiveFilteredData(data))
+  }, [settings])
+
   return (
     <div className='app'>
       <nav className="navbar">
@@ -34,4 +54,11 @@ function App() {
   )
 }
 
-export default connect()(App)
+const mapStateToProps = (state) => {
+  return {
+    settings: state.settings,
+    allData: state.allData,
+  }
+}
+
+export default connect(mapStateToProps)(App)

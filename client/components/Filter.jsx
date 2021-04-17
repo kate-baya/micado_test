@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
 
-import { getValues, getSubSeries } from '../apis/covidDataApi'
+import { getSubSeries } from '../apis/covidDataApi'
 import { receiveFilterOptions } from '../actions/index'
 
 function Filter({subSeries, settings, dispatch}) {
@@ -13,7 +13,6 @@ function Filter({subSeries, settings, dispatch}) {
     })
 
   useEffect(() => {
-    getValues(state.subSeries, state.start, state.end, dispatch) 
     getSubSeries(dispatch)
   }, [])
 
@@ -23,7 +22,6 @@ function Filter({subSeries, settings, dispatch}) {
   }
 
   const handleSend = () => {
-    getValues(state.subSeries, state.start, state.end, dispatch )
     dispatch(receiveFilterOptions(state))
     setState({...state, filter: false})
   }
@@ -45,7 +43,6 @@ function Filter({subSeries, settings, dispatch}) {
             </span>
           </button>
         </div>
-
         <div className="dropdown-menu" id="dropdown-menu" role="menu">
           <div className="dropdown-content">
             <div className="dropdown-item">
@@ -101,8 +98,8 @@ function Filter({subSeries, settings, dispatch}) {
 const mapStateToProps = (state) => {
   return {
     subSeries: state.subSeries,
-    settings: state.settings
+    settings: state.settings,
   }
 }
 
-export default connect(mapStateToProps, null)(Filter)
+export default connect(mapStateToProps)(Filter)

@@ -1,13 +1,13 @@
 import { combineReducers } from 'redux'
 
-import filteredData from './filteredData'
 import subSeries from './subSeries'
 import settings from './settings'
 import allData from './allData'
+import data from './data'
 
 export default combineReducers({
   subSeries,
-  filteredData,
   settings,
-  allData
+  allData,
+  data
 })

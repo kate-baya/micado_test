@@ -9,7 +9,15 @@ const margin = { top: 20, right: 30, bottom: 80, left: 120 }
 const xAxisLabelOffset = 65
 const xAxisTickFormat = format(".2s")
 
-function BarChart({ data }) {
+function BarChart({allData, settings }) {
+  const data = allData[settings.subSeries]
+  if(data) {
+    return <LoadedBarChart data={data} />
+  } 
+  return '...Loading'
+}
+
+function LoadedBarChart({ data }) {
   const myRef = useRef(null)
 
   const parameterLength = []
@@ -62,8 +70,8 @@ function BarChart({ data }) {
 
 const mapStateToProps = (state) => {
   return {
-    data: state.filteredData,
-    subSeries: state.subSeries
+    allData: state.allData,
+    settings: state.settings
   }
 }
 

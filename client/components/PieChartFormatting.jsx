@@ -5,9 +5,9 @@ import {getAverageData} from '../apis/covidDataApi'
 import {min, max} from 'd3'
 
 function PieChartFormatting ({settings, dispatch, allData}) {
-  useEffect(() => {
-    getAverageData(settings, dispatch)
-  },[settings])
+  // useEffect(() => {
+  //   getAverageData(settings, dispatch)
+  // },[settings])
 
   const recoveredValue = []
   const deceasedValue = []
