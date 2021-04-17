@@ -2,12 +2,12 @@ import React, { useState } from 'react'
 import { connect } from 'react-redux'
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd'
 
-import Average from './Average'
-import Total from './Total'
-import MinMax from './MinMax'
-import Welcome from './Welcome'
+import Average from './analyticsModules/Average'
+import Total from './analyticsModules/Total'
+import MinMax from './analyticsModules/MinMax'
+import Welcome from './analyticsModules/Welcome'
 
-function Analytics({settings}) {
+function Analytics() {
   const [components, updateComponents] = useState(
     [
       { id: '1', name: Welcome},
@@ -53,10 +53,4 @@ function Analytics({settings}) {
   )
 }
 
-const mapStateToProps = (state) => {
-  return {
-    settings: state.settings
-  }
-}
-
-export default connect(mapStateToProps)(Analytics)
+export default connect()(Analytics)

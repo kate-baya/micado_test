@@ -12,7 +12,7 @@ function LoadData({ allData, testsByDay }) {
   if (loaded) {
     return <Test testsByDay={loaded} allData={allData} />
   }
-  return 'Loading'
+  return '...Loading'
 }
 
 function Test({ allData }) {

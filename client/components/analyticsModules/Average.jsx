@@ -2,16 +2,22 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { mean } from 'd3'
 
-function Average({ data, cat }) {
+function Average({allData, settings}) {
+  const testsByDay = allData['Tests by day']
+  if (testsByDay) {
+    return <LoadedAverage testsByDay={testsByDay} settings={settings} />
+  }
+  return '...Loading'
+}
 
-  
-  const valueAverage = mean(data.map(d => d.value))
+function LoadedAverage({ testsByDay, settings }) {
+  const valueAverage = mean(testsByDay.map(d => d.value))
 
   return (
     <div className='columns'>
       <div className='column'>
         <h1 className='is-size-5 has-text-weight-semibold'>{valueAverage}</h1>
-        <p className='has-text-weight-medium'>Average {cat}</p>
+        <p className='has-text-weight-medium'>Average</p>
       </div>
       <div className='column is-narrow'>
         <figure className="image is-64x64">
@@ -24,8 +30,8 @@ function Average({ data, cat }) {
 
 const mapStateToProps = (state) => {
   return {
-    data: state.filteredData,
-    cat: state.cat
+    allData: state.allData,
+    settings: state.settings
   }
 }
 

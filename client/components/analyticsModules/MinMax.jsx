@@ -2,7 +2,8 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { max, min } from 'd3'
 
-function MinMax({ data, cat }) {
+function MinMax({ settings, allData}) {
+  const data = allData[settings.subSeries]
   const minValue = min(data.map(d => d.value))
   const maxValue = max(data.map(d => d.value))
 
@@ -10,7 +11,7 @@ function MinMax({ data, cat }) {
     <div className='columns'>
       <div className='column'>
         <h1 className='is-size-5 has-text-weight-semibold'>{minValue} {' '} min - {maxValue} {' '} max {' '}</h1>
-        <p className='has-text-weight-medium'>Minimum - Maximum {' '} {cat}</p>
+        <p className='has-text-weight-medium'>{settings.subSeries} {' '} Minimum - {' '} {settings.subSeries} {' '} Maximum </p>
       </div>
       <div className='column is-narrow'>
         <figure className="image is-64x64">
@@ -23,8 +24,8 @@ function MinMax({ data, cat }) {
 
 const mapStateToProps = (state) => {
   return {
-    data: state.filteredData,
-    cat: state.cat
+    settings: state.settings,
+    allData: state.allData
   }
 }
 

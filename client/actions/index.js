@@ -1,14 +1,7 @@
-export const RECEIVE_FILTERED_DATA = 'RECEIVE_FILTERED_DATA'
 export const RECEIVE_SUBSERIES = 'RECEIVE_SUBSERIES'
 export const RECEIVE_FILTER_OPTIONS = 'RECEIVE_FILTER_OPTIONS'
 export const RECEIVE_ALL_DATA = 'RECEIVE_ALL_DATA'
-
-export const receiveData = (filteredData) => {
-  return {
-      type: RECEIVE_FILTERED_DATA,
-      filteredData: filteredData
-  }
-}
+export const RECEIVE_FILTERED_DATA = 'RECEIVE_FILTERED_DATA'
 
 export const receiveSubSeries = (subSeries) => {
   return {
@@ -21,6 +14,14 @@ export const receiveFilterOptions = (settings) => {
   return {
     type: RECEIVE_FILTER_OPTIONS,
     settings: settings
+  }
+}
+
+export const receiveFilteredData = (data) => {
+  console.log(data)
+  return {
+    type: RECEIVE_FILTERED_DATA,
+    data: data
   }
 }
 
