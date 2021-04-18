@@ -13,17 +13,22 @@ FRONTEND COMPONENTS
       have chosen at the previous bullet point,
      
   c. a date picker as a global filter to allow slicing the data in date ranges.
+  
 2. Front-end should allow drag-and-drop of visualisation components i.e., the user should be      able to change the location of visualisations or metrics.
-3. Visualisation components should be resizable.
-4. Your UI should follow a responsive design principle.
-5. Your app should be able to run on all major internet browsers like Chrome, Edge
+
+4. Visualisation components should be resizable.
+
+6. Your UI should follow a responsive design principle.
+
+8. Your app should be able to run on all major internet browsers like Chrome, Edge
 (Chromium), Firefox and Safari.
-This is a dashboard created with React, Redux, D3, React Beautiful dnd, Bulma, Express, Postgres, and Knex.
 
 BACKEND COMPONENTS
 1. The data should reside in a database.
-2. Your back-end can be containerised, or, setup locally residing next to the front-end.
-3. Feel free to use any optimisation you see fit for providing a responsive front-end.
+
+3. Your back-end can be containerised, or, setup locally residing next to the front-end.
+
+5. Feel free to use any optimisation you see fit for providing a responsive front-end.
 
 DATA
 I was given a sample dataset from Stats NZ website in a CSV format which I imported using Postgres. I used Knex to connect to my database and return relevant data. 
