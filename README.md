@@ -1,11 +1,3 @@
-# Fullstack boilerplate
+Micado Test
 
-This repo includes:
-
-* a single, simple API endpoint
-* a single React component
-* an example database module
-* an API client module
-* configuration for Jest and Enzyme (including JSDOM)
-* configuration for server-side debugging in VS Code
-* a single client-side test
+This is a dashboard created with React, Redux, D3, React Beautiful dnd, Bulma, Express, Postgres, and Knex.
