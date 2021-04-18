@@ -4,7 +4,6 @@ import {getAllData} from '../apis/covidDataApi'
 import {receiveFilteredData} from '../actions/index'
 
 import Dashboard from './Dashboard'
-import { dispatch } from 'd3-dispatch'
 // import LineChart from './LineChart'
 
 function App({settings, dispatch, allData}) {

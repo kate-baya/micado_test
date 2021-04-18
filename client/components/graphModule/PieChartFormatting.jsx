@@ -1,14 +1,10 @@
-import React, {useEffect} from 'react'
+import React from 'react'
 import {connect} from 'react-redux'
 import PieChart from './PieChart'
-import {getAverageData} from '../apis/covidDataApi'
 import {min, max} from 'd3'
+import {dateTransform} from  '../helperFunctions'
 
-function PieChartFormatting ({settings, dispatch, allData}) {
-  // useEffect(() => {
-  //   getAverageData(settings, dispatch)
-  // },[settings])
-
+function PieChartFormatting ({settings, allData}) {
   const recoveredValue = []
   const deceasedValue = []
   const activeValue = []
@@ -33,10 +29,10 @@ function PieChartFormatting ({settings, dispatch, allData}) {
 
   return(
     <>
-    <span>
+    <div className='is-size-4 has-text-weight-bold'>
     <h1>New Zealand Covid Cases</h1>
-    <p>{settings.start} - {settings.end}</p>
-    </span>
+    <p>{dateTransform(settings.start)} - {dateTransform(settings.end)}</p>
+    </div>
     <PieChart data={pieChartData}/>
     </>
   )

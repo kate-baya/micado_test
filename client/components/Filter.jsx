@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 
 import { getSubSeries } from '../apis/covidDataApi'
 import { receiveFilterOptions } from '../actions/index'
+import {dateTransform} from './helperFunctions'
 
 function Filter({subSeries, settings, dispatch}) {
   const [state, setState] = useState({
@@ -37,7 +38,7 @@ function Filter({subSeries, settings, dispatch}) {
             </span>
           </button>
           <button className="button" aria-haspopup="true" aria-controls="dropdown-menu" onClick={() => setState({...state, filter: true})}>
-            <span>{new Date(settings.start).toString().substring(4, 15)} - {new Date(settings.end).toString().substring(4, 15)}</span>
+            <span>{dateTransform(settings.start)} - {dateTransform(settings.end)}</span>
             <span className="icon">
               <i className="fas fa-angle-down" aria-hidden="true" />
             </span>

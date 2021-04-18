@@ -1,5 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import { numberFormat } from '../helperFunctions'
 
 function TableRecovered({ allData }) {
   return (
@@ -13,7 +14,7 @@ function TableRecovered({ allData }) {
       <ul>
         {allData.Recovered.map(d => {
           return <li key={d.parameter} className='p-3 pl-5 border has-text-weight-medium'>
-            {d.value}
+            {numberFormat(d.value)}
           </li>
         }
         )}

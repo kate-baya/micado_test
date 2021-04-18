@@ -2,8 +2,8 @@ import React, { useState } from 'react'
 import { connect } from 'react-redux'
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd'
 
-import BarChart from './BarChart'
-import PieChartFormatting from './PieChartFormatting'
+import BarChart from './graphModule/BarChart'
+import PieChartFormatting from './graphModule/PieChartFormatting'
 
 function Graph() {
   const [components, updateComponents] = useState(

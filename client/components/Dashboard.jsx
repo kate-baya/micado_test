@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd'
+import {dateTransform} from './helperFunctions'
 
 import Analytics from './Analytics'
 import Graph from './Graph'
@@ -26,7 +27,7 @@ function Dashboard({settings}) {
   return (
     <>
       <div className='block level has-text-weight-semibold'>
-        <p className='is-size-4'>Dashboard | {new Date(settings.start).toString().substring(4, 15)} - {new Date(settings.end).toString().substring(4, 15)}</p>
+        <p className='is-size-4'>Dashboard | {dateTransform(settings.start)} - {dateTransform(settings.end)}</p>
         <Filter />
       </div>
       <DragDropContext onDragEnd={handleOnDragEnd}>

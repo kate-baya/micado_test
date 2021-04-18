@@ -1,5 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import {numberFormat} from '../helperFunctions'
 
 function Total ({ allData }) {
   const loaded = allData['Total tests (cumulative)']
@@ -14,7 +15,7 @@ function ShowTotal({ data }) {
     <>
       <div className='columns'>
         <div className='column'>
-          <h1 className='is-size-5 has-text-weight-semibold'>{data[data.length-1].value}</h1>
+          <h1 className='is-size-5 has-text-weight-semibold'>{numberFormat(data[data.length-1].value)}</h1>
           <p className='has-text-weight-medium'>Total Tests (Cumulative) since 1st March 2020</p>
         </div>
         <div className='column is-narrow'>

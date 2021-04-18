@@ -18,7 +18,6 @@ export const receiveFilterOptions = (settings) => {
 }
 
 export const receiveFilteredData = (data) => {
-  console.log(data)
   return {
     type: RECEIVE_FILTERED_DATA,
     data: data
