@@ -1,5 +1,7 @@
 Micado Technical Interview Challenge - Full-Stack Developer
 
+(To run this application, clone the project onto your computer, install all dependencies, and enter npm run build (or 'dev') in your terminal)
+
 Although I am just starting out as a developer, I was given a technical challenge to test not only my understanding, but also my ability to problem solve and learn. This challenge was a fantasitc opportunity to further develop my coding skills.
 
 I was asked to put together a modern, dynamic, end-to-end web app that utilises REST API calls to visualise data. This is a dynamic front-end that can be modified by the user through simple actions like drag-and-drop.
