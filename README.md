@@ -6,9 +6,12 @@ I was asked to put together a modern, dynamic, end-to-end web app that utilises 
 
 FRONTEND COMPONENTS
 1. Your front-end should provide
+
   a. two to four summary metrics at the top of the layout,
+  
   b. followed with a visualisation that shows the breakdown of the metrics you
       have chosen at the previous bullet point,
+     
   c. a date picker as a global filter to allow slicing the data in date ranges.
 2. Front-end should allow drag-and-drop of visualisation components i.e., the user should be      able to change the location of visualisations or metrics.
 3. Visualisation components should be resizable.
